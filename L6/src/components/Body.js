@@ -5,6 +5,8 @@ import { useState } from "react";
 import ShimmerCards from "./Shimmer";
 const Body = ()=>{
     const [magicdata,setFilterData] = useState([]);
+    const [filterdRest,setFilterRest] = useState([]);
+    const [textSearch,setTextSearch] = useState("");
     useEffect(()=>{
         fetchData();
     },[])
@@ -14,6 +16,7 @@ const Body = ()=>{
         //const json = await data.json();
         const mydata = await data();
         setFilterData(mydata);
+        setFilterRest(mydata);
     }
     if(magicdata.length === 0){
         return <ShimmerCards></ShimmerCards>
@@ -22,19 +25,29 @@ const Body = ()=>{
         <div className="body">
             <div className="filter">
                 <button className="filter-btn" onClick={
-                    ()=>{
-                        const filterdata = data.filter((d)=>{
+                    async ()=>{
+                        const mydata = await data();
+                        const filterdata = mydata.filter((d)=>{
                             if(parseInt(d.rating)>=4)return true;
                             else return false;
                         })
-                        console.log(filterdata);
-                        setFilterData(filterdata);
+                        setFilterRest(filterdata);
                     }
                 }>Top Rated Restaurent</button>
+                 <div className="Search">
+                <input  className='search-input'  type="text" placeholder="Search Restaurant" value={textSearch} onChange={(e)=>setTextSearch(e.target.value)}></input>
+                <button className='search-button' type="submit" onClick={()=>{
+
+                    const searchRecords = magicdata.filter((data)=>{
+                        return data.name.toLowerCase().includes(textSearch.toLowerCase());
+                    })
+                    setFilterRest(searchRecords);
+                }}>Seach</button>
+                </div>
             </div>
             <div className="cardbody">
             {   
-                magicdata.map(restaurent=><Card resdata={restaurent}></Card>)
+                filterdRest.map(restaurent=><Card resdata={restaurent} key={restaurent.id}></Card>)
             }
             </div>
         </div>

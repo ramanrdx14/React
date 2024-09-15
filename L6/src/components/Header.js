@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { image_LOGO } from "../utils/constants";
 const Header = ()=>{
+    const [initialStatus,changeLoginStatus] = useState("Login");
     return (
         <div className="header">
             <div className="logo-container">
@@ -8,9 +9,16 @@ const Header = ()=>{
             </div>
             <div className="navlinks">
                 <ul>
-                    <li>Home</li>
-                    <li>Contact</li>
-                    <li>Cart</li>
+                    <a href="#"><li>Home</li></a>
+                    <a href="#"><li>Contact</li></a>
+                    <a href="#"><li>Cart</li></a>
+                    <a href="#" onClick={()=>{
+                        if(initialStatus === 'Login'){
+                            changeLoginStatus('Logout');
+                        }else{
+                            changeLoginStatus('Login');
+                        }
+                    }}><li>{initialStatus}</li></a>
                 </ul>
             </div>
         </div>

@@ -39,7 +39,6 @@
     width: 200px;
     display: flex;
     justify-content: center;
-    border: 2px solid lightgrey;
     flex-direction: column;
 }
 
@@ -55,10 +54,9 @@
 }
 
 .filter{
-    width: 20%;
-    height: 30px;
-    margin: auto;
-    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
 .filter-btn{
     padding: 10px;
@@ -82,4 +80,24 @@
    gap: 40px;   
   justify-content: space-between;
   align-items: center;
+}
+ul a:visited{
+    color: black;;
+}
+ul a:link{
+    color: black;
+    text-decoration: none;
+}
+ul a:hover{
+    color: red;
+}
+.search-input{
+    height: 35px;
+    text-align: center;
+    font-size: 16px;
+}
+.search-button{
+    height: 35px;
+    padding: 0px 10px;
+    margin-left: 10px;
 }
