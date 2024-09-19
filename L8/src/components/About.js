@@ -4,7 +4,7 @@ import UserClass from "./UserClass"
 const About = ()=>{
     return (
         <div>
-        <h2>This is Food App V-1</h2>
+        <h2>Our Teams:</h2>
         <UserClass name="raman"></UserClass>
         </div>
     );

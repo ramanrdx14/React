@@ -3,23 +3,24 @@ class Userclass extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            count1:1,
-            count2:2
+           useData:{}
         }
+    }
+    async componentDidMount(){
+        const data = await fetch("https://api.github.com/users/ramanrdx14");
+        const json = await data.json();
+        this.setState({
+            useData : json
+        })
     }
     render(){
 
         return (
             <div>
-            <h2>This is class Based Componet  Name  {this.props.name}</h2>
-            <h2>This is class Based Component Count {this.state.count1}</h2>
-            <h2>This is class Based Component Count {this.state.count2}</h2>
-            <button onClick={()=>{
-                this.setState({
-                    count1:this.state.count1+1,
-                    count2:this.state.count2+1
-                })
-            }}>Counter Click</button>
+                <img src={this.state.useData.avatar_url} alt="" height={50} width={50}></img>
+                <h2>Name :{this.state.useData.type}</h2>
+                <h2>Location : {this.state.useData.location}</h2>
+                {console.log(this.state.useData)}
             </div>
         );
     }
