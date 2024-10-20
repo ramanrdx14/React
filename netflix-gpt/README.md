@@ -2,7 +2,15 @@
 
 - createreact app
 - configured tailwind
-
+- Header
+- Routing of the app
+- Login Form
+- Sign Up Free
+- Form Validation
+- useRef Hook
+- firebase setup
+- deploying our app to production
+- adding users 
 
 # Features
 - Login (SignIN SignUP form)
